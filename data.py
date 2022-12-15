@@ -3,7 +3,7 @@ from os.path import join
 from torch.utils.data import Dataset
 
 from PIL import Image
-from torchvision.transforms import Compose, ToTensor, Normalize, Resize
+from torchvision.transforms import Compose, ToTensor, Normalize, Resize, RandomRotation
 import torch
 
 
@@ -30,6 +30,7 @@ class LoadDataset(Dataset):
                     self.images.append(join(self.config['path'], classname, filename))
 
         self.transform = Compose([
+            RandomRotation(30, expand=True),
             Resize(self.config['image_size']),
             ToTensor(),
             Normalize(mean=[0.485, 0.456, 0.406],

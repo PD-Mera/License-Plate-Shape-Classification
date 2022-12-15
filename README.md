@@ -12,6 +12,8 @@ Install requirements
 pip install -r requirements.txt
 ```
 
+For more infomation, refer to [DEVICE.md](./DEVICE.md)
+
 ## Data
 
 - I cannot public my data. You can use your own data or crawl from internet.
@@ -52,7 +54,7 @@ Results after training 10 epochs
 
 | Model       | Training Info | Best Accuracy | Pretrained              |
 | ----------- |:-------------:| :-----------: | :---------------------: |
-| Resnet18    | Adam, lr=1e-5 | 99.89%        | [Model](https://drive.google.com/file/d/1nRbjT_MGbUwwLP_Io0Vtsk0qvSQ8XALe/view?usp=share_link) |
+| Resnet18    | Adam, lr=1e-5 | 99.89%        | [Model](http://bit.ly/3PshMuc) |
 
 You can download weight file above and put in `weights` folder and run inference
 
