@@ -10,8 +10,8 @@ TRAINING_CFG = {
     'path': './data/train/',
     'class': CLASS_INFO,
     'image_size': (224, 224),
-    'modelname': 'resnet18',
-    'epoch': 10, 
+    'modelname': 'mobilenetv3s',
+    'epoch': 30, 
     'batch_size': 128,
     'optimizer': 'Adam',
     'learning_rate': 1e-5,
@@ -36,6 +36,6 @@ TESTING_CFG = {
     'result_path': './result'
 }
 
-MODEL_AVAILABLE = ['custom', 'resnet18', 'resnet50', 'resnet152']
+MODEL_AVAILABLE = ['custom', 'resnet18', 'resnet50', 'resnet152', 'mobilenetv3s']
 OPTIMIZER_AVAILABLE = ['Adam']
 LOSS_AVAILABLE = ['custom', 'CE']

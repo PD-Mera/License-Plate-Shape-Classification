@@ -50,11 +50,12 @@ python train.py
 
 ### Experiment Results
 
-Results after training 10 epochs
+Some experiment results
 
-| Model       | Training Info | Best Accuracy | Pretrained              |
-| ----------- |:-------------:| :-----------: | :---------------------: |
-| Resnet18    | Adam, lr=1e-5 | 99.89%        | [Model](http://bit.ly/3PshMuc) |
+| Model             | Training Info | Epoch | Best Accuracy | Pretrained                      |
+| ----------------- |:-------------:| :---: | :-----------: | :-----------------------------: |
+| Resnet18          | Adam, lr=1e-5 | 10    | 99.89%        | [Model](https://bit.ly/3PshMuc) |
+| MobilenetV3_Small | Adam, lr=1e-5 | 30    | 100.00%       | [Model](https://bit.ly/3PNqKST) |
 
 You can download weight file above and put in `weights` folder and run inference
 

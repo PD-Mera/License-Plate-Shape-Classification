@@ -14,6 +14,7 @@ class ClsfModel(nn.Module):
         return x
 
 
+
 def init_model(config):
     assert config['modelname'] in MODEL_AVAILABLE, f'"modelname" in `config.py` must in {MODEL_AVAILABLE}'
     model_name = config['modelname']
@@ -28,6 +29,9 @@ def init_model(config):
 
         elif model_name == 'resnet152':
             backbone = resnet152(weights=ResNet152_Weights.DEFAULT)
+
+        elif model_name == 'mobilenetv3s':
+            backbone = mobilenet_v3_small(weights=MobileNet_V3_Small_Weights.DEFAULT)
 
         model = nn.Sequential(
             backbone,
