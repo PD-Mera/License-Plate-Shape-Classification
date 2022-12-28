@@ -1,8 +1,9 @@
 from os import listdir
 from os.path import join
 from torch.utils.data import Dataset
+import random
 
-from PIL import Image
+from PIL import Image, ImageFilter
 from torchvision.transforms import Compose, ToTensor, Normalize, Resize, RandomRotation
 import torch
 
@@ -11,10 +12,18 @@ def is_image_file(filename):
     return any(filename.endswith(extension) for extension in ['.png', '.jpg', '.jpeg', '.PNG', '.JPG', '.JPEG'])
 
 
-def to_onehot_tensor(class_num, index):
-    label = [0 for _ in range(class_num)]
-    label[index] = 1
+def to_onehot_tensor(class_num, index, smooth = 0.9):
+    label = [(1 - smooth) / (class_num - 1) for _ in range(class_num)]
+    label[index] = smooth
     return torch.Tensor(label)
+
+
+def random_gaussian_blur(img, thres = 0.5, radius_range = [2, 5]):
+    rand = random.random()
+    if rand < thres:
+        radius = random.randint(radius_range[0], radius_range[1])
+        img = img.filter(ImageFilter.GaussianBlur(radius = radius))
+    return img
 
 
 class LoadDataset(Dataset):
@@ -40,6 +49,7 @@ class LoadDataset(Dataset):
   
     def __getitem__(self, index):
         image = Image.open(self.images[index])
+        image = random_gaussian_blur(image, thres=1)
         image = self.transform(image)
         
         class_name = self.images[index].split('/')[-2]
